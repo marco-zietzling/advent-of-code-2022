@@ -16,13 +16,13 @@ def calculate_item_priority(item: chr):
         raise Exception(f"Unknown item {item}")
 
 
-sum = 0
+priority_sum = 0
 for entry in entries:
     split_position = len(entry) // 2
     compartment1 = entry[:split_position]
     compartment2 = entry[split_position:]
     common_item = next(iter(set(compartment1).intersection(compartment2)))
-    sum += calculate_item_priority(common_item)
+    priority_sum += calculate_item_priority(common_item)
 
     # print(f"{entry} to be split at position {split_position}")
     # print(f"{compartment1} -- {compartment2}")
@@ -30,17 +30,17 @@ for entry in entries:
     # print(f"priority of common item: {calculate_item_priority(common_item)}")
 
 # result = 7766
-print(f"part 1: result = {sum}")
+print(f"part 1: result = {priority_sum}")
 
-sum = 0
+priority_sum = 0
 i = 0
 while i < len(entries) - 2:
     rucksack1 = entries[i]
     rucksack2 = entries[i + 1]
     rucksack3 = entries[i + 2]
     common_item = next(iter(set(rucksack1).intersection(rucksack2).intersection(rucksack3)))
-    sum += calculate_item_priority(common_item)
+    priority_sum += calculate_item_priority(common_item)
     i += 3
 
 # result = 2415
-print(f"part 2: result = {sum}")
+print(f"part 2: result = {priority_sum}")
